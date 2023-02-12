@@ -17,6 +17,8 @@ import '101/padding_learn.dart';
 import '101/statefull_learn.dart';
 import '101/stateless_learn.dart';
 import '101/text_field_learn.dart';
+import '202/model_learn_view.dart';
+import '202/tab_learn.dart';
 
 void main() => runApp(const MyApp());
 
@@ -27,10 +29,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'To Do App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.amber),
-      home: ToDoApp(),
+      theme: ThemeData.dark().copyWith(
+        tabBarTheme: const TabBarTheme(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.red,
+          indicatorSize: TabBarIndicatorSize.label,
+        ),
+        bottomAppBarTheme:
+            const BottomAppBarTheme(shape: CircularNotchedRectangle()),
+        progressIndicatorTheme:
+            const ProgressIndicatorThemeData(color: Colors.white),
+        listTileTheme: const ListTileThemeData(contentPadding: EdgeInsets.zero),
+        cardTheme: CardTheme(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20))),
+        textSelectionTheme: const TextSelectionThemeData(
+            selectionColor: Colors.red,
+            cursorColor: Colors.green,
+            selectionHandleColor: Colors.black),
+        inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.white,
+            iconColor: Colors.red,
+            labelStyle: TextStyle(color: Colors.lime),
+            border: OutlineInputBorder(),
+            floatingLabelStyle: TextStyle(
+                color: Colors.red, fontSize: 24, fontWeight: FontWeight.w600)),
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+      ),
+      home: ModelLearnView(),
     );
   }
 }
